@@ -1,0 +1,23 @@
+using NUnit.Framework;
+using System;
+using System.IO;
+
+namespace HelloWorld.Tests
+{
+    [TestFixture]
+    public class ProgramTests
+    {
+        [Test]
+        public void Main_PrintsHelloWorld_Successfully()
+        {
+            using(StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                Program.Main(new string[0]);
+
+                string expected = string.Format("Hello World!{0}", Environment.NewLine);
+                Assert.AreEqual(expected, sw.ToString());
+            }
+        }
+    }
+}
